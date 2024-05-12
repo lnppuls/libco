@@ -7,7 +7,6 @@
 #include <setjmp.h>
 #include <sys/types.h>
 
-
 #define STACK_SIZE 4 * 1024
 
 enum CO_STATUS {
@@ -31,9 +30,6 @@ struct CO {
 static Co *current_co;
 static int co_num = 0;
 static Co *main_co;
-
-
-
 
 Co * co_start(char *name, void (*func)(void *), void *arg) {
     Co *co = (Co *)malloc(sizeof(Co));
@@ -64,7 +60,6 @@ Co * co_start(char *name, void (*func)(void *), void *arg) {
     co_yield();
     return co;
 }
-
 
 void co_yield() {
     int val = setjmp(current_co->co_buf);
